@@ -7,7 +7,8 @@ module.exports = {
     entry: './src/App.tsx',
     output: {
         filename: '[name].[contenthash].js',
-        path: path.join(process.cwd(), 'dist')
+        path: path.join(process.cwd(), 'dist'),
+        publicPath: '/'
     },
     plugins: [
         new CleanWebpackPlugin(),
@@ -21,6 +22,9 @@ module.exports = {
     resolve: {
         extensions: ['.tsx', '.ts', '.js'],
     },
+    devServer: {
+        historyApiFallback: true,
+    },
     module: {
         rules: [
             {
@@ -28,7 +32,9 @@ module.exports = {
                 use: [{
                     loader: 'babel-loader',
                     options: {
-                        presets: ["@babel/preset-typescript", "@babel/preset-react"]
+                        presets: ["@babel/preset-typescript", ["@babel/preset-react", {
+                            "runtime": "automatic"
+                        }]]
                     }
                 }],
                 exclude: /[\\/]node_modules[\\/]/

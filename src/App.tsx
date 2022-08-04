@@ -1,6 +1,6 @@
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-
+import { createRoot } from 'react-dom/client'
+import { Store } from './Store/Store';
+import "./App.scss"
 
 // To-DO
 // Routing
@@ -17,5 +17,9 @@ import * as ReactDOM from 'react-dom';
 // Unit Tests
 // React Query
 // ReadMe
+// Lint and pritter
+// Search Icon
+// Logo
+// Menu Button to close when open
 
-ReactDOM.render(<>Hello</>, document.getElementById('root'));
+createRoot(document.getElementById('root') as HTMLElement).render(<Store/>)
