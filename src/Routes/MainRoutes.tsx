@@ -3,7 +3,7 @@ import { AddSensorComponent } from "../Components/AddSensor/AddSensorComponent"
 import { DashboardComponent } from "../Components/Dashboard/DashboardComponent"
 import { EditSensorComponent } from "../Components/EditSensor/EditSensorComponent"
 import { SensorDetailComponent } from "../Components/SensorDetail/SensorDetailComponent"
-import { HeaderAndMenu } from "../Shared/HeaderAndMenu/HeaderAndMenu"
+import { FrameHOC } from "../Shared/FrameHOC/FrameHOC"
 
 const TheRoutes = () => {
     return (
@@ -18,4 +18,4 @@ const TheRoutes = () => {
     )
 }
 
-export const MainRoutes = HeaderAndMenu(TheRoutes)
+export const MainRoutes = FrameHOC(TheRoutes)

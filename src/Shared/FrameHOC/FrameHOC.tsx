@@ -3,7 +3,7 @@ import * as React from 'react'
 import { SideMenu } from "./SideMenu";
 import { Header } from "./Header";
 
-export const HeaderAndMenu = (WrappedComponent: FunctionComponent) => {
+export const FrameHOC = (WrappedComponent: FunctionComponent) => {
   class HigherOrderComponent extends React.Component {
     render() {
       return <>

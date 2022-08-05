@@ -15,7 +15,7 @@ export const SideMenu = () => {
                 <div className="mt-10">
                   <ul>
                     <li className="my-12 ml-7 text-center">
-                      <a href="#">
+                      <a href="/">
                         <span className="h-6 w-6 text-gray-500 dark:text-gray-300 mx-auto hover:text-gray-800 dark:hover:text-white transition-colors duration-200">
                           <HomeIcon />
                         </span>
@@ -61,7 +61,7 @@ export const SideMenu = () => {
             <div className="flex flex-col sm:flex-row sm:justify-around">
               <div className="w-72 h-screen">
                 <nav className="mt-10 px-6 ">
-                  <a className="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg " href="#">
+                  <a href="/" className="hover:text-gray-800 hover:bg-gray-100 flex items-center p-2 my-6 transition-colors dark:hover:text-white dark:hover:bg-gray-600 duration-200  text-gray-600 dark:text-gray-400 rounded-lg ">
                     <HomeIcon />
                     <span className="mx-4 text-lg font-normal">
                       Dashboard
