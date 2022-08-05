@@ -21,5 +21,6 @@ import "./App.scss"
 // Search Icon
 // Logo
 // Menu Button to close when open
+// Move text to constants
 
 createRoot(document.getElementById('root') as HTMLElement).render(<Store/>)

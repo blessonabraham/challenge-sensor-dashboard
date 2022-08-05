@@ -10,7 +10,7 @@ export const HeaderAndMenu = (WrappedComponent: FunctionComponent) => {
         <Header />
         <div className="flex flex-row">
           <SideMenu />
-          <div className="container mx-auto px-5 py-5">
+          <div className="container mx-auto px-8 py-8">
             <WrappedComponent />
           </div>
         </div>
