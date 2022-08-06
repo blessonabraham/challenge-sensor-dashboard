@@ -70,8 +70,7 @@ export const SensorDetailComponent = () => {
                         </ul>
                     </div>
                 </div>
-                <div>
-                    Graph
+                <div className="w-1/2">
                 </div>
             </div>
 
@@ -90,7 +89,6 @@ export const SensorDetailComponent = () => {
 
                 <br />
                 <br />
-                Graph
                 <br />
                 <br />
             </div>

@@ -15,10 +15,12 @@ export const Header = () => {
                     <div className="flex items-center justify-between h-16">
                         <div className="flex items-center gap-5">
                             <span onClick={() => dispatch(setToggleDrawerAction())}>
-                                {toggleDrawer && <CloseIcon />}
-                                {!toggleDrawer && <MenuIcon />}
+                                {toggleDrawer && <div className="w-8 h-8"><CloseIcon /></div>}
+                                {!toggleDrawer && <div className="w-8 h-8"><MenuIcon /></div>}
                             </span>
-                            <ImageIcon />
+                            <div className="w-8 h-8">
+                                <ImageIcon />
+                            </div>
                         </div>
                         <div className="block">
                             <div className="ml-4 flex items-center md:ml-6">
@@ -29,7 +31,9 @@ export const Header = () => {
                                             <p className="text-sm leading-tight">Account Settings</p>
                                         </div>
                                         <span className="text-gray-600">
-                                            <UserIcon />
+                                            <div className="w-10 h-10">
+                                                <UserIcon />
+                                            </div>
                                         </span>
                                     </div>
                                 </div>
