@@ -1,13 +1,15 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { SensorListType, SensorRowType, State } from "../Shared/Types/Types"
-import { tranformStatsForChart } from "../Shared/Util/Transformers"
-import { fetchSensorListAction, fetchSensorStatsAction, setToggleDrawerAction } from "./Actions"
+import { SensorDetailsType, SensorListType, SensorRowType, SensorWeeklyRowType, State } from "../Shared/Types/Types"
+import { tranformStatsForChart, tranformWeeklyStatsForChart } from "../Shared/Util/Transformers"
+import { fetchSensorDetailsAction, fetchSensorListAction, fetchSensorStatsAction, fetchSensorWeeklyStatsAction, setToggleDrawerAction } from "./Actions"
 
 const initialState: State = {
     toggleDrawer: false,
     isLoading: false,
     sensorList: null,
-    sensorStats: null
+    sensorStats: null,
+    sensorDetails: null,
+    sensorWeeklyStats: null
 }
 
 const slice = createSlice({
@@ -36,6 +38,26 @@ const slice = createSlice({
             state.isLoading = false
         },
         [fetchSensorStatsAction.rejected.toString()]: (state: State) => {
+            state.isLoading = false
+        },
+        [fetchSensorDetailsAction.pending.toString()]: (state: State) => {
+            state.isLoading = true
+        },
+        [fetchSensorDetailsAction.fulfilled.toString()]: (state: State, action: PayloadAction<{ result: SensorDetailsType}>) => {
+            state.sensorDetails = action.payload.result
+            state.isLoading = false
+        },
+        [fetchSensorDetailsAction.rejected.toString()]: (state: State) => {
+            state.isLoading = false
+        },
+        [fetchSensorWeeklyStatsAction.pending.toString()]: (state: State) => {
+            state.isLoading = true
+        },
+        [fetchSensorWeeklyStatsAction.fulfilled.toString()]: (state: State, action: PayloadAction<SensorWeeklyRowType>) => {
+            state.sensorWeeklyStats =  tranformWeeklyStatsForChart(action.payload)
+            state.isLoading = false
+        },
+        [fetchSensorWeeklyStatsAction.rejected.toString()]: (state: State) => {
             state.isLoading = false
         },
     }

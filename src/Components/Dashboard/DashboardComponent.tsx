@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Link } from 'react-router-dom';
 import {
     CartesianGrid,
     Legend,
@@ -187,12 +188,12 @@ export const DashboardComponent = () => {
                                 </button>
                             </div>
                             <div className='w-1/6'>
-                                <button
-                                    type='submit'
+                                <Link to={'/sensor-detail/' + data.device_id}
+                                    type='button'
                                     className='flex w-10/12 items-center justify-center rounded-lg bg-gray-600 py-2 px-4 text-center text-base font-normal text-gray-100 shadow-md'
                                 >
                                     Details
-                                </button>
+                                </Link>
                             </div>
                         </div>
                     ))}

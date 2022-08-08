@@ -10,7 +10,7 @@ export const fetchSensorListAction = createAsyncThunk(
   'sensor/fetchSensorListAction',
   async (page?: number) => {
     try {
-      const result = await getRequest(API_ENDPOINTS.GET_SESNORS, { page });
+      const result = await getRequest(API_ENDPOINTS.GET_SENSORS, { page });
       return result;
     } catch {}
   },
@@ -20,7 +20,28 @@ export const fetchSensorStatsAction = createAsyncThunk(
   'sensor/fetchSensorStatsAction',
   async () => {
     try {
-      const result = await getRequest(API_ENDPOINTS.GET_SESNORS_STATS);
+      const result = await getRequest(API_ENDPOINTS.GET_SENSORS_STATS);
+      return result;
+    } catch {}
+  },
+);
+
+
+export const fetchSensorDetailsAction = createAsyncThunk(
+  'sensor/fetchSensorDetailsAction',
+  async (deviceId: string) => {
+    try {
+      const result = await getRequest(API_ENDPOINTS.GET_SENSORS + '/' + deviceId);
+      return result;
+    } catch {}
+  },
+);
+
+export const fetchSensorWeeklyStatsAction = createAsyncThunk(
+  'sensor/fetchSensorWeeklyStatsAction',
+  async (deviceId: string) => {
+    try {
+      const result = await getRequest(API_ENDPOINTS.GET_SENSORS + '/' + deviceId + API_ENDPOINTS.GET_SENSORS_STATS_WEEKLY);
       return result;
     } catch {}
   },

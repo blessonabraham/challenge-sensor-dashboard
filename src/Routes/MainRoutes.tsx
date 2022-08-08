@@ -1,21 +1,26 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom"
-import { AddSensorComponent } from "../Components/AddSensor/AddSensorComponent"
-import { DashboardComponent } from "../Components/Dashboard/DashboardComponent"
-import { EditSensorComponent } from "../Components/EditSensor/EditSensorComponent"
-import { SensorDetailComponent } from "../Components/SensorDetail/SensorDetailComponent"
-import { FrameHOC } from "../Shared/FrameHOC/FrameHOC"
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { AddSensorComponent } from '../Components/AddSensor/AddSensorComponent';
+import { DashboardComponent } from '../Components/Dashboard/DashboardComponent';
+import { EditSensorComponent } from '../Components/EditSensor/EditSensorComponent';
+import { SensorDetailComponent } from '../Components/SensorDetail/SensorDetailComponent';
+import { FrameHOC } from '../Shared/FrameHOC/FrameHOC';
 
-const TheRoutes = () => {
+const FramedRoutes = FrameHOC(() => (
+    <Routes>
+        <Route path='/' element={<DashboardComponent />} />
+        <Route path='/add-sensor' element={<AddSensorComponent />} />
+        <Route path='/edit-sensor' element={<EditSensorComponent />} />
+        <Route
+            path='/sensor-detail/:sensorId'
+            element={<SensorDetailComponent />}
+        />
+    </Routes>
+));
+
+export const MainRoutes = () => {
     return (
         <BrowserRouter>
-            <Routes>
-                <Route path="/" element={<DashboardComponent />} />
-                <Route path="/add-sensor" element={<AddSensorComponent />} />
-                <Route path="/edit-sensor" element={<EditSensorComponent />} />
-                <Route path="/sensor-detail" element={<SensorDetailComponent />} />
-            </Routes>
+            <FramedRoutes />
         </BrowserRouter>
-    )
-}
-
-export const MainRoutes = FrameHOC(TheRoutes)
+    );
+};

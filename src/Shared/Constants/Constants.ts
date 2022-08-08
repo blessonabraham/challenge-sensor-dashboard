@@ -1,7 +1,8 @@
 export const API_ENDPOINTS = {
     ROOT: 'http://localhost:3009',
-    GET_SESNORS: '/sensor',
-    GET_SESNORS_STATS: '/sensor/stats'
+    GET_SENSORS: '/sensor',
+    GET_SENSORS_STATS: '/sensor/stats',
+    GET_SENSORS_STATS_WEEKLY: '/stats/weekly',
 }
 
 export const ADD_SENSOR = {
