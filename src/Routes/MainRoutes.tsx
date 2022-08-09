@@ -9,7 +9,7 @@ const FramedRoutes = FrameHOC(() => (
     <Routes>
         <Route path='/' element={<DashboardComponent />} />
         <Route path='/add-sensor' element={<AddSensorComponent />} />
-        <Route path='/edit-sensor' element={<EditSensorComponent />} />
+        <Route path='/edit-sensor/:sensorId' element={<EditSensorComponent />} />
         <Route
             path='/sensor-detail/:sensorId'
             element={<SensorDetailComponent />}

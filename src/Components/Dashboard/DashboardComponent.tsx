@@ -180,12 +180,13 @@ export const DashboardComponent = () => {
                                 <div className='block text-sm'>Location</div>
                             </div>
                             <div className='w-1/6'>
-                                <button
+                                <Link
+                                    to={'/edit-sensor/' + data.device_id}
                                     type='button'
                                     className='flex w-10/12 items-center justify-center rounded-lg bg-gray-200 py-2 px-4 text-center text-base font-normal text-gray-600 shadow-md'
                                 >
                                     Options
-                                </button>
+                                </Link>
                             </div>
                             <div className='w-1/6'>
                                 <Link

@@ -9,11 +9,6 @@ import {
     StatsListType,
 } from '../Shared/Types/Types';
 import {
-    tranformStatsForChart,
-    tranformWeeklyAvgStatsForChart,
-    tranformWeeklyStatsForChart,
-} from '../Shared/Util/Transformers';
-import {
     fetchSensorDetailsAction,
     fetchSensorEventsAction,
     fetchSensorListAction,

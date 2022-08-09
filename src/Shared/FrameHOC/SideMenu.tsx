@@ -6,6 +6,7 @@ import {
     ChartIcon,
     UsersIcon,
     SettingsIcon,
+    AddIcon,
 } from '../Icons/SVGIcons';
 import { State } from '../Types/Types';
 
@@ -25,6 +26,15 @@ export const SideMenu = () => {
                                             <span className='mx-auto text-gray-500 transition-colors duration-200 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white'>
                                                 <div className='h-6 w-6'>
                                                     <HomeIcon />
+                                                </div>
+                                            </span>
+                                        </Link>
+                                    </li>
+                                    <li className='my-12 ml-7 text-center'>
+                                        <Link to='/add-sensor'>
+                                            <span className='mx-auto text-gray-500 transition-colors duration-200 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white'>
+                                                <div className='h-6 w-6'>
+                                                    <AddIcon />
                                                 </div>
                                             </span>
                                         </Link>
@@ -78,6 +88,18 @@ export const SideMenu = () => {
                                     </div>
                                     <span className='mx-4 text-lg font-normal'>
                                         Dashboard
+                                    </span>
+                                    <span className='flex-grow text-right'></span>
+                                </Link>
+                                <Link
+                                    to='/add-sensor'
+                                    className='my-6 flex items-center rounded-lg p-2 text-gray-600 transition-colors duration-200 hover:bg-gray-100 hover:text-gray-800  dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white '
+                                >
+                                    <div className='h-6 w-6'>
+                                        <AddIcon />
+                                    </div>
+                                    <span className='mx-4 text-lg font-normal'>
+                                        Add Sensor
                                     </span>
                                     <span className='flex-grow text-right'></span>
                                 </Link>
