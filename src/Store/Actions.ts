@@ -3,46 +3,99 @@ import { API_ENDPOINTS } from '../Shared/Constants/Constants';
 import { getRequest } from '../Shared/NetworkService/NetworkService';
 
 export const setToggleDrawerAction = createAction(
-  'sensor/setToggleDrawerAction',
+    'sensor/setToggleDrawerAction',
 );
 
 export const fetchSensorListAction = createAsyncThunk(
-  'sensor/fetchSensorListAction',
-  async (page?: number) => {
-    try {
-      const result = await getRequest(API_ENDPOINTS.GET_SENSORS, { page });
-      return result;
-    } catch {}
-  },
+    'sensor/fetchSensorListAction',
+    async (page?: number) => {
+        try {
+            const result = await getRequest(API_ENDPOINTS.GET_SENSOR, {
+                page,
+            });
+            return result;
+        } catch {}
+    },
 );
 
 export const fetchSensorStatsAction = createAsyncThunk(
-  'sensor/fetchSensorStatsAction',
-  async () => {
-    try {
-      const result = await getRequest(API_ENDPOINTS.GET_SENSORS_STATS);
-      return result;
-    } catch {}
-  },
+    'sensor/fetchSensorStatsAction',
+    async () => {
+        try {
+            const result = await getRequest(API_ENDPOINTS.GET_SENSOR_STATS);
+            return result;
+        } catch {}
+    },
 );
 
-
 export const fetchSensorDetailsAction = createAsyncThunk(
-  'sensor/fetchSensorDetailsAction',
-  async (deviceId: string) => {
-    try {
-      const result = await getRequest(API_ENDPOINTS.GET_SENSORS + '/' + deviceId);
-      return result;
-    } catch {}
-  },
+    'sensor/fetchSensorDetailsAction',
+    async (deviceId: string) => {
+        try {
+            const result = await getRequest(
+                API_ENDPOINTS.GET_SENSOR + '/' + deviceId,
+            );
+            return result;
+        } catch {}
+    },
 );
 
 export const fetchSensorWeeklyStatsAction = createAsyncThunk(
-  'sensor/fetchSensorWeeklyStatsAction',
-  async (deviceId: string) => {
-    try {
-      const result = await getRequest(API_ENDPOINTS.GET_SENSORS + '/' + deviceId + API_ENDPOINTS.GET_SENSORS_STATS_WEEKLY);
-      return result;
-    } catch {}
-  },
+    'sensor/fetchSensorWeeklyStatsAction',
+    async (deviceId: string) => {
+        try {
+            const result = await getRequest(
+                API_ENDPOINTS.GET_SENSOR +
+                    '/' +
+                    deviceId +
+                    API_ENDPOINTS.GET_SENSOR_STATS_WEEKLY,
+            );
+            return result;
+        } catch {}
+    },
+);
+
+export const fetchSensorWeeklyAvgStatsAction = createAsyncThunk(
+    'sensor/fetchSensorWeeklyAvgStatsAction',
+    async (deviceId: string) => {
+        try {
+            const result = await getRequest(
+                API_ENDPOINTS.GET_SENSOR +
+                    '/' +
+                    deviceId +
+                    API_ENDPOINTS.GET_SENSOR_STATS_WEEKLY_AVG,
+            );
+            return result;
+        } catch {}
+    },
+);
+
+export const fetchSensorLogsAction = createAsyncThunk(
+    'sensor/fetchSensorLogsAction',
+    async (deviceId: string) => {
+        try {
+            const { results } = await getRequest(
+                API_ENDPOINTS.GET_SENSOR +
+                    '/' +
+                    deviceId +
+                    API_ENDPOINTS.GET_SENSOR_LOGS,
+            );
+            return results;
+        } catch {}
+    },
+);
+
+export const fetchSensorEventsAction = createAsyncThunk(
+    'sensor/fetchSensorEventsAction',
+    async (deviceId: string) => {
+        try {
+            const { results } = await getRequest(
+                API_ENDPOINTS.GET_SENSOR +
+                    '/' +
+                    deviceId +
+                    API_ENDPOINTS.GET_SENSOR_EVENTS,
+            );
+            return results;
+        } catch {}
+    },
 );

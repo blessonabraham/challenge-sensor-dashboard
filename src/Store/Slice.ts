@@ -1,7 +1,29 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { SensorDetailsType, SensorListType, SensorRowType, SensorWeeklyRowType, State } from "../Shared/Types/Types"
-import { tranformStatsForChart, tranformWeeklyStatsForChart } from "../Shared/Util/Transformers"
-import { fetchSensorDetailsAction, fetchSensorListAction, fetchSensorStatsAction, fetchSensorWeeklyStatsAction, setToggleDrawerAction } from "./Actions"
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import {
+    SensorDetailsType,
+    SensorEvent,
+    SensorListType,
+    SensorLog,
+    SensorRowType,
+    SensorWeeklyAvgRowType,
+    SensorWeeklyRowType,
+    State,
+} from '../Shared/Types/Types';
+import {
+    tranformStatsForChart,
+    tranformWeeklyAvgStatsForChart,
+    tranformWeeklyStatsForChart,
+} from '../Shared/Util/Transformers';
+import {
+    fetchSensorDetailsAction,
+    fetchSensorEventsAction,
+    fetchSensorListAction,
+    fetchSensorLogsAction,
+    fetchSensorStatsAction,
+    fetchSensorWeeklyAvgStatsAction,
+    fetchSensorWeeklyStatsAction,
+    setToggleDrawerAction,
+} from './Actions';
 
 const initialState: State = {
     toggleDrawer: false,
@@ -9,8 +31,11 @@ const initialState: State = {
     sensorList: null,
     sensorStats: null,
     sensorDetails: null,
-    sensorWeeklyStats: null
-}
+    sensorWeeklyStats: null,
+    sensorWeeklyAvgStats: null,
+    sensorLogs: null,
+    sensorEvents: null
+};
 
 const slice = createSlice({
     name: 'Slice',
@@ -18,51 +43,109 @@ const slice = createSlice({
     reducers: {},
     extraReducers: {
         [setToggleDrawerAction.toString()]: (state: State) => {
-            state.toggleDrawer = !state.toggleDrawer
+            state.toggleDrawer = !state.toggleDrawer;
         },
         [fetchSensorListAction.pending.toString()]: (state: State) => {
-            state.isLoading = true
+            state.isLoading = true;
         },
-        [fetchSensorListAction.fulfilled.toString()]: (state: State, action: PayloadAction<SensorListType>) => {
-            state.sensorList = action.payload
-            state.isLoading = false
+        [fetchSensorListAction.fulfilled.toString()]: (
+            state: State,
+            action: PayloadAction<SensorListType>,
+        ) => {
+            state.sensorList = action.payload;
+            state.isLoading = false;
         },
         [fetchSensorListAction.rejected.toString()]: (state: State) => {
-            state.isLoading = false
+            state.isLoading = false;
         },
         [fetchSensorStatsAction.pending.toString()]: (state: State) => {
-            state.isLoading = true
+            state.isLoading = true;
         },
-        [fetchSensorStatsAction.fulfilled.toString()]: (state: State, action: PayloadAction<SensorRowType>) => {
-            state.sensorStats = tranformStatsForChart(action.payload)
-            state.isLoading = false
+        [fetchSensorStatsAction.fulfilled.toString()]: (
+            state: State,
+            action: PayloadAction<SensorRowType>,
+        ) => {
+            state.sensorStats = tranformStatsForChart(action.payload);
+            state.isLoading = false;
         },
         [fetchSensorStatsAction.rejected.toString()]: (state: State) => {
-            state.isLoading = false
+            state.isLoading = false;
         },
         [fetchSensorDetailsAction.pending.toString()]: (state: State) => {
-            state.isLoading = true
+            state.isLoading = true;
         },
-        [fetchSensorDetailsAction.fulfilled.toString()]: (state: State, action: PayloadAction<{ result: SensorDetailsType}>) => {
-            state.sensorDetails = action.payload.result
-            state.isLoading = false
+        [fetchSensorDetailsAction.fulfilled.toString()]: (
+            state: State,
+            action: PayloadAction<{ result: SensorDetailsType }>,
+        ) => {
+            state.sensorDetails = action.payload.result;
+            state.isLoading = false;
         },
         [fetchSensorDetailsAction.rejected.toString()]: (state: State) => {
-            state.isLoading = false
+            state.isLoading = false;
         },
         [fetchSensorWeeklyStatsAction.pending.toString()]: (state: State) => {
-            state.isLoading = true
+            state.isLoading = true;
         },
-        [fetchSensorWeeklyStatsAction.fulfilled.toString()]: (state: State, action: PayloadAction<SensorWeeklyRowType>) => {
-            state.sensorWeeklyStats =  tranformWeeklyStatsForChart(action.payload)
-            state.isLoading = false
+        [fetchSensorWeeklyStatsAction.fulfilled.toString()]: (
+            state: State,
+            action: PayloadAction<SensorWeeklyRowType>,
+        ) => {
+            state.sensorWeeklyStats = tranformWeeklyStatsForChart(
+                action.payload,
+            );
+            state.isLoading = false;
         },
         [fetchSensorWeeklyStatsAction.rejected.toString()]: (state: State) => {
-            state.isLoading = false
+            state.isLoading = false;
         },
-    }
-})
+        [fetchSensorWeeklyAvgStatsAction.pending.toString()]: (
+            state: State,
+        ) => {
+            state.isLoading = true;
+        },
+        [fetchSensorWeeklyAvgStatsAction.fulfilled.toString()]: (
+            state: State,
+            action: PayloadAction<SensorWeeklyAvgRowType>,
+        ) => {
+            state.sensorWeeklyAvgStats = tranformWeeklyAvgStatsForChart(
+                action.payload,
+            );
+            state.isLoading = false;
+        },
+        [fetchSensorWeeklyAvgStatsAction.rejected.toString()]: (
+            state: State,
+        ) => {
+            state.isLoading = false;
+        },
+        [fetchSensorLogsAction.pending.toString()]: (state: State) => {
+            state.isLoading = true;
+        },
+        [fetchSensorLogsAction.fulfilled.toString()]: (
+            state: State,
+            action: PayloadAction<SensorLog[]>,
+        ) => {
+            state.sensorLogs = action.payload;
+            state.isLoading = false;
+        },
+        [fetchSensorLogsAction.rejected.toString()]: (state: State) => {
+            state.isLoading = false;
+        },
+        [fetchSensorEventsAction.pending.toString()]: (state: State) => {
+            state.isLoading = true;
+        },
+        [fetchSensorEventsAction.fulfilled.toString()]: (
+            state: State,
+            action: PayloadAction<SensorEvent[]>,
+        ) => {
+            state.sensorEvents = action.payload;
+            state.isLoading = false;
+        },
+        [fetchSensorEventsAction.rejected.toString()]: (state: State) => {
+            state.isLoading = false;
+        },
+    },
+});
 
-const { reducer } = slice
+const { reducer } = slice;
 export default reducer;
-

@@ -1,22 +1,25 @@
 export const API_ENDPOINTS = {
     ROOT: 'http://localhost:3009',
-    GET_SENSORS: '/sensor',
-    GET_SENSORS_STATS: '/sensor/stats',
-    GET_SENSORS_STATS_WEEKLY: '/stats/weekly',
-}
+    GET_SENSOR: '/sensor',
+    GET_SENSOR_STATS: '/sensor/stats',
+    GET_SENSOR_STATS_WEEKLY: '/stats/weekly',
+    GET_SENSOR_STATS_WEEKLY_AVG: '/stats/weekly_avg',
+    GET_SENSOR_LOGS: '/logs',
+    GET_SENSOR_EVENTS: '/events',
+};
 
 export const ADD_SENSOR = {
-    TITLE: ''
-}
+    TITLE: '',
+};
 
 export const EDIT_SENSOR = {
-    TITLE: ''
-}
+    TITLE: '',
+};
 
 export const SENSOR_DASHBOARD = {
-    TITLE: ''
-}
+    TITLE: '',
+};
 
 export const SENSOR_DETAILS = {
-    TITLE: ''
-}
+    TITLE: '',
+};

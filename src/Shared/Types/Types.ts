@@ -4,7 +4,10 @@ export interface State {
     sensorList: SensorListType;
     sensorStats: SensorStatsType;
     sensorDetails: SensorDetailsType;
-    sensorWeeklyStats: StatsListType[]
+    sensorWeeklyStats: StatsListType[];
+    sensorWeeklyAvgStats: SensorStatsType;
+    sensorLogs: SensorLog[];
+    sensorEvents: SensorEvent[];
 }
 
 export type SensorStatsType = {
@@ -21,11 +24,18 @@ export type SensorRowType = {
     results: {
         stats: { time: string; temp: number }[];
         device_id: string;
-    }[]
+    }[];
+};
+
+export type SensorWeeklyAvgRowType = {
+    results: {
+        stats: { time: string; temp: number }[];
+        sensor_id: string;
+    }[];
 };
 
 export type SensorWeeklyRowType = {
-    results: { time: string; temp: number }[]
+    results: { time: string; temp: number }[];
 };
 
 export type SensorListType = {
@@ -51,14 +61,25 @@ export type PagingType = {
 };
 
 export type SensorDetailsType = {
-    device_id: string,
-    last_online: string,
-    last_temp: number,
-    customer: string,
-    location: string,
+    device_id: string;
+    last_online: string;
+    last_temp: number;
+    customer: string;
+    location: string;
     overview: {
-        total_messages: number,
-        down_time: number,
-        alerts: number
-    }
-}
+        total_messages: number;
+        down_time: number;
+        alerts: number;
+    };
+};
+
+export type SensorLog = {
+    time: string;
+    description: string;
+};
+
+export type SensorEvent = {
+    event_name: string;
+    description: string;
+    time: string;
+};
