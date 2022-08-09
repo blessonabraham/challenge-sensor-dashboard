@@ -3,6 +3,8 @@ import * as React from 'react';
 import { SideMenu } from './SideMenu';
 import { Header } from './Header';
 import { ScrollToTop } from '../Util/ScrollToTop';
+import { Footer } from './Footer';
+import { Loader } from '../Util/Loader';
 
 export const FrameHOC = (WrappedComponent: FunctionComponent) => {
     class HigherOrderComponent extends React.Component {
@@ -10,6 +12,7 @@ export const FrameHOC = (WrappedComponent: FunctionComponent) => {
             return (
                 <>
                     <ScrollToTop />
+                    <Loader/>
                     <Header />
                     <div className='flex flex-row'>
                         <SideMenu />
@@ -17,6 +20,7 @@ export const FrameHOC = (WrappedComponent: FunctionComponent) => {
                             <WrappedComponent />
                         </div>
                     </div>
+                    <Footer/>
                 </>
             );
         }
