@@ -10,6 +10,7 @@ import {
 } from '../Shared/Types/Types';
 import {
     addSensorAction,
+    deleteSensorAction,
     fetchSensorDetailsAction,
     fetchSensorEventsAction,
     fetchSensorListAction,
@@ -152,6 +153,15 @@ const slice = createSlice({
             state.isLoading = false;
         },
         [updateSensorAction.rejected.toString()]: (state: State) => {
+            state.isLoading = false;
+        },
+        [deleteSensorAction.pending.toString()]: (state: State) => {
+            state.isLoading = true;
+        },
+        [deleteSensorAction.fulfilled.toString()]: (state: State) => {
+            state.isLoading = false;
+        },
+        [deleteSensorAction.rejected.toString()]: (state: State) => {
             state.isLoading = false;
         },
     },

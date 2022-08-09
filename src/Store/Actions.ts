@@ -2,6 +2,7 @@ import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { API_ENDPOINTS } from '../Shared/Constants/Constants';
 import { Logger } from '../Shared/LoggerService/LoggerService';
 import {
+    deleteRequest,
     getRequest,
     postRequest,
     putRequest,
@@ -147,8 +148,22 @@ export const updateSensorAction = createAsyncThunk(
     async (payload: AddSensorPayloadType) => {
         try {
             const { results } = await putRequest(
-                API_ENDPOINTS.GET_SENSOR,
+                API_ENDPOINTS.GET_SENSOR + '/' + payload.device_id,
                 payload,
+            );
+            return results;
+        } catch (e) {
+            Logger('updateSensorAction:: ' + JSON.stringify(e));
+        }
+    },
+);
+
+export const deleteSensorAction = createAsyncThunk(
+    'sensor/deleteSensorAction',
+    async (deviceId: string) => {
+        try {
+            const { results } = await deleteRequest(
+                API_ENDPOINTS.GET_SENSOR + '/' + deviceId,
             );
             return results;
         } catch (e) {

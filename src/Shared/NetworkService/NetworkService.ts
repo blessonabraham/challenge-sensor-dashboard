@@ -21,3 +21,10 @@ export const putRequest = async (url: string, body?: any, params?: any) => {
     });
     return data;
 };
+
+export const deleteRequest = async (url: string, params?: any) => {
+    const { data } = await axios.delete(API_ENDPOINTS.ROOT + url, {
+        params,
+    });
+    return data;
+};

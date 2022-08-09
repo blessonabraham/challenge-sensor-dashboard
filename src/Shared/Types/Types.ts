@@ -82,6 +82,7 @@ export type SensorEvent = {
 };
 
 export type AddSensorPayloadType = {
+    device_id: string;
     company_website: string;
     min_temp_limit: number;
     monitor_min_temp: boolean;
