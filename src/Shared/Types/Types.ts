@@ -20,22 +20,19 @@ export type StatsListType = {
     [sensorId: string]: number | string;
 };
 
-export type SensorRowType = {
-    results: {
-        stats: { time: string; temp: number }[];
-        device_id: string;
-    }[];
+export type SensorStatsPayloadType = {
+    stats: { time: string; temp: number }[];
+    device_id: string;
 };
 
-export type SensorWeeklyAvgRowType = {
-    results: {
-        stats: { time: string; temp: number }[];
-        sensor_id: string;
-    }[];
+export type SensorWeeklyPayloadType = {
+    time: string;
+    temp: number;
 };
 
-export type SensorWeeklyRowType = {
-    results: { time: string; temp: number }[];
+export type SensorWeeklyAvgPayloadType = {
+    stats: { time: string; temp: number }[];
+    sensor_id: string;
 };
 
 export type SensorListType = {

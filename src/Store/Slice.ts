@@ -4,10 +4,9 @@ import {
     SensorEvent,
     SensorListType,
     SensorLog,
-    SensorRowType,
-    SensorWeeklyAvgRowType,
-    SensorWeeklyRowType,
+    SensorStatsType,
     State,
+    StatsListType,
 } from '../Shared/Types/Types';
 import {
     tranformStatsForChart,
@@ -34,7 +33,7 @@ const initialState: State = {
     sensorWeeklyStats: null,
     sensorWeeklyAvgStats: null,
     sensorLogs: null,
-    sensorEvents: null
+    sensorEvents: null,
 };
 
 const slice = createSlice({
@@ -63,9 +62,9 @@ const slice = createSlice({
         },
         [fetchSensorStatsAction.fulfilled.toString()]: (
             state: State,
-            action: PayloadAction<SensorRowType>,
+            action: PayloadAction<SensorStatsType>,
         ) => {
-            state.sensorStats = tranformStatsForChart(action.payload);
+            state.sensorStats = action.payload;
             state.isLoading = false;
         },
         [fetchSensorStatsAction.rejected.toString()]: (state: State) => {
@@ -76,9 +75,9 @@ const slice = createSlice({
         },
         [fetchSensorDetailsAction.fulfilled.toString()]: (
             state: State,
-            action: PayloadAction<{ result: SensorDetailsType }>,
+            action: PayloadAction<SensorDetailsType>,
         ) => {
-            state.sensorDetails = action.payload.result;
+            state.sensorDetails = action.payload;
             state.isLoading = false;
         },
         [fetchSensorDetailsAction.rejected.toString()]: (state: State) => {
@@ -89,11 +88,9 @@ const slice = createSlice({
         },
         [fetchSensorWeeklyStatsAction.fulfilled.toString()]: (
             state: State,
-            action: PayloadAction<SensorWeeklyRowType>,
+            action: PayloadAction<StatsListType[]>,
         ) => {
-            state.sensorWeeklyStats = tranformWeeklyStatsForChart(
-                action.payload,
-            );
+            state.sensorWeeklyStats = action.payload;
             state.isLoading = false;
         },
         [fetchSensorWeeklyStatsAction.rejected.toString()]: (state: State) => {
@@ -106,11 +103,9 @@ const slice = createSlice({
         },
         [fetchSensorWeeklyAvgStatsAction.fulfilled.toString()]: (
             state: State,
-            action: PayloadAction<SensorWeeklyAvgRowType>,
+            action: PayloadAction<SensorStatsType>,
         ) => {
-            state.sensorWeeklyAvgStats = tranformWeeklyAvgStatsForChart(
-                action.payload,
-            );
+            state.sensorWeeklyAvgStats = action.payload;
             state.isLoading = false;
         },
         [fetchSensorWeeklyAvgStatsAction.rejected.toString()]: (

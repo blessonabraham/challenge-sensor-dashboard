@@ -1,15 +1,18 @@
 import {
-    SensorRowType,
-    SensorWeeklyAvgRowType,
-    SensorWeeklyRowType,
+    SensorStatsPayloadType,
+    SensorStatsType,
+    SensorWeeklyAvgPayloadType,
+    SensorWeeklyPayloadType,
     StatsListType,
 } from '../Types/Types';
 
-export const tranformStatsForChart = (sensorRowData: SensorRowType) => {
+export const tranformStatsForChart = (
+    sensorRowData: SensorStatsPayloadType[],
+): SensorStatsType => {
     const sensorIds: string[] = [];
     const statsList: StatsListType[] = [];
 
-    sensorRowData?.results?.map((result) => {
+    sensorRowData?.map((result) => {
         const deviceId = result.device_id || 'Unknown';
         sensorIds.push(deviceId);
         result.stats.sort((a, b) => Number(a.time) - Number(b.time));
@@ -41,11 +44,11 @@ export const tranformStatsForChart = (sensorRowData: SensorRowType) => {
 };
 
 export const tranformWeeklyStatsForChart = (
-    sensorRowData: SensorWeeklyRowType,
+    sensorRowData: SensorWeeklyPayloadType[],
 ) => {
     const statsList: StatsListType[] = [];
-    sensorRowData.results.sort((a, b) => Number(a.time) - Number(b.time));
-    sensorRowData?.results?.map((result) => {
+    sensorRowData?.sort((a, b) => Number(a.time) - Number(b.time));
+    sensorRowData?.map((result) => {
         const date = new Date(Number(result?.time));
         const dateFormated =
             date.getDate() +
@@ -72,12 +75,13 @@ export const tranformWeeklyStatsForChart = (
     return statsList;
 };
 
-
-export const tranformWeeklyAvgStatsForChart = (sensorRowData: SensorWeeklyAvgRowType) => {
+export const tranformWeeklyAvgStatsForChart = (
+    sensorRowData: SensorWeeklyAvgPayloadType[],
+) => {
     const sensorIds: string[] = [];
     const statsList: StatsListType[] = [];
 
-    sensorRowData?.results?.map((result) => {
+    sensorRowData?.map((result) => {
         const deviceId = result.sensor_id || 'Unknown';
         sensorIds.push(deviceId);
         result.stats.sort((a, b) => Number(a.time) - Number(b.time));
