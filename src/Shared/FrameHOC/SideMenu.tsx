@@ -16,14 +16,14 @@ export const SideMenu = () => {
     return (
         <>
             {!toggleDrawer && (
-                <div className='flex flex-row'>
-                    <nav className='flex w-20 flex-col justify-between bg-gray-100 dark:bg-gray-800'>
+                <div className='flex flex-row bg-gray-100 shadow'>
+                    <nav className=' flex w-20 flex-col justify-between'>
                         <div className='mt-1 mb-10'>
                             <div className='mt-10'>
                                 <ul>
                                     <li className='my-12 ml-7 text-center'>
                                         <Link to='/'>
-                                            <span className='mx-auto text-gray-500 transition-colors duration-200 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white'>
+                                            <span className='mx-auto text-gray-500 transition-colors duration-200 hover:text-gray-800'>
                                                 <div className='h-6 w-6'>
                                                     <HomeIcon />
                                                 </div>
@@ -32,7 +32,7 @@ export const SideMenu = () => {
                                     </li>
                                     <li className='my-12 ml-7 text-center'>
                                         <Link to='/add-sensor'>
-                                            <span className='mx-auto text-gray-500 transition-colors duration-200 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white'>
+                                            <span className='mx-auto text-gray-500 transition-colors duration-200 hover:text-gray-800'>
                                                 <div className='h-6 w-6'>
                                                     <AddIcon />
                                                 </div>
@@ -40,28 +40,28 @@ export const SideMenu = () => {
                                         </Link>
                                     </li>
                                     <li className='my-12 ml-7 text-center'>
-                                        <span className='mx-auto text-gray-500 transition-colors duration-200 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white'>
+                                        <span className='mx-auto text-gray-500 transition-colors duration-200 hover:text-gray-800'>
                                             <div className='h-6 w-6'>
                                                 <ReportDocumentIcon />
                                             </div>
                                         </span>
                                     </li>
                                     <li className='my-12 ml-7 text-center'>
-                                        <span className='mx-auto text-gray-500 transition-colors duration-200 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white'>
+                                        <span className='mx-auto text-gray-500 transition-colors duration-200 hover:text-gray-800'>
                                             <div className='h-6 w-6'>
                                                 <ChartIcon />
                                             </div>
                                         </span>
                                     </li>
                                     <li className='my-12 ml-7 text-center'>
-                                        <span className='mx-auto text-gray-500 transition-colors duration-200 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white'>
+                                        <span className='mx-auto text-gray-500 transition-colors duration-200 hover:text-gray-800'>
                                             <div className='h-6 w-6'>
                                                 <UsersIcon />
                                             </div>
                                         </span>
                                     </li>
                                     <li className='my-12 ml-7 text-center'>
-                                        <span className='mx-auto text-gray-500 transition-colors duration-200 hover:text-gray-800 dark:text-gray-300 dark:hover:text-white'>
+                                        <span className='mx-auto text-gray-500 transition-colors duration-200 hover:text-gray-800'>
                                             <div className='h-6 w-6'>
                                                 <SettingsIcon />
                                             </div>
@@ -75,13 +75,13 @@ export const SideMenu = () => {
             )}
 
             {toggleDrawer && (
-                <div className='relative w-1/5 bg-gray-100 dark:bg-gray-800'>
+                <div className='relative w-1/5 bg-gray-100 shadow'>
                     <div className='flex flex-col sm:flex-row sm:justify-around'>
                         <div className='h-screen w-72'>
                             <nav className='mt-10 px-6 '>
                                 <Link
                                     to='/'
-                                    className='my-6 flex items-center rounded-lg p-2 text-gray-600 transition-colors duration-200 hover:bg-gray-100 hover:text-gray-800  dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white '
+                                    className='my-6 flex items-center rounded-lg p-2 text-gray-600 transition-colors duration-200 hover:bg-gray-100 hover:text-gray-800'
                                 >
                                     <div className='h-6 w-6'>
                                         <HomeIcon />
@@ -93,7 +93,7 @@ export const SideMenu = () => {
                                 </Link>
                                 <Link
                                     to='/add-sensor'
-                                    className='my-6 flex items-center rounded-lg p-2 text-gray-600 transition-colors duration-200 hover:bg-gray-100 hover:text-gray-800  dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white '
+                                    className='my-6 flex items-center rounded-lg p-2 text-gray-600 transition-colors duration-200 hover:bg-gray-100 hover:text-gray-800'
                                 >
                                     <div className='h-6 w-6'>
                                         <AddIcon />
@@ -104,7 +104,7 @@ export const SideMenu = () => {
                                     <span className='flex-grow text-right'></span>
                                 </Link>
                                 <Link
-                                    className='my-6 flex items-center rounded-lg p-2 text-gray-600 transition-colors duration-200 hover:bg-gray-100 hover:text-gray-800  dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white '
+                                    className='my-6 flex items-center rounded-lg p-2 text-gray-600 transition-colors duration-200 hover:bg-gray-100 hover:text-gray-800'
                                     to={''}
                                 >
                                     <div className='h-6 w-6'>
@@ -116,7 +116,7 @@ export const SideMenu = () => {
                                     <span className='flex-grow text-right'></span>
                                 </Link>
                                 <Link
-                                    className='my-6 flex items-center rounded-lg p-2 text-gray-600 transition-colors duration-200 hover:bg-gray-100 hover:text-gray-800  dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white '
+                                    className='my-6 flex items-center rounded-lg p-2 text-gray-600 transition-colors duration-200 hover:bg-gray-100 hover:text-gray-800'
                                     to={''}
                                 >
                                     <div className='h-6 w-6'>
@@ -128,7 +128,7 @@ export const SideMenu = () => {
                                     <span className='flex-grow text-right'></span>
                                 </Link>
                                 <Link
-                                    className='my-6 flex items-center rounded-lg p-2 text-gray-600 transition-colors duration-200 hover:bg-gray-100 hover:text-gray-800  dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white '
+                                    className='my-6 flex items-center rounded-lg p-2 text-gray-600 transition-colors duration-200 hover:bg-gray-100 hover:text-gray-800'
                                     to={''}
                                 >
                                     <div className='h-6 w-6'>
@@ -140,7 +140,7 @@ export const SideMenu = () => {
                                     <span className='flex-grow text-right'></span>
                                 </Link>
                                 <Link
-                                    className='my-6 flex items-center rounded-lg p-2 text-gray-600 transition-colors duration-200 hover:bg-gray-100 hover:text-gray-800  dark:text-gray-400 dark:hover:bg-gray-600 dark:hover:text-white '
+                                    className='my-6 flex items-center rounded-lg p-2 text-gray-600 transition-colors duration-200 hover:bg-gray-100 hover:text-gray-800'
                                     to={''}
                                 >
                                     <div className='h-6 w-6'>

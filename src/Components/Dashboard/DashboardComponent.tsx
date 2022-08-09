@@ -47,14 +47,10 @@ export const DashboardComponent = () => {
                     <div className='flex flex-row'>
                         <div className='flex flex-1 cursor-pointer select-none items-center p-4'>
                             <div className='mr-16 flex-1 pl-1'>
-                                <div className='font-medium dark:text-white'>
-                                    TOTAL SENSORS
-                                </div>
-                                <div className='text-sm text-gray-600 dark:text-gray-200'>
-                                    182
-                                </div>
+                                <div className='font-medium'>TOTAL SENSORS</div>
+                                <div className='text-sm text-gray-600'>182</div>
                             </div>
-                            <div className='text-gray-600 dark:text-gray-200'>
+                            <div className='text-gray-600'>
                                 <div className='h-12 w-12'>
                                     <SensorIcon />
                                 </div>
@@ -66,14 +62,10 @@ export const DashboardComponent = () => {
                     <div className='flex flex-row'>
                         <div className='flex flex-1 cursor-pointer select-none items-center p-4'>
                             <div className='mr-16 flex-1 pl-1'>
-                                <div className='font-medium dark:text-white'>
-                                    OPEN ALERTS
-                                </div>
-                                <div className='text-sm text-gray-600 dark:text-gray-200'>
-                                    2
-                                </div>
+                                <div className='font-medium'>OPEN ALERTS</div>
+                                <div className='text-sm text-gray-600'>2</div>
                             </div>
-                            <div className='text-gray-600 dark:text-gray-200'>
+                            <div className='text-gray-600'>
                                 <div className='h-12 w-12'>
                                     <AlertIcon />
                                 </div>
@@ -85,14 +77,12 @@ export const DashboardComponent = () => {
                     <div className='flex flex-row'>
                         <div className='flex flex-1 cursor-pointer select-none items-center p-4'>
                             <div className='mr-16 flex-1 pl-1'>
-                                <div className='font-medium dark:text-white'>
+                                <div className='font-medium'>
                                     TOTAL CUSTOMERS
                                 </div>
-                                <div className='text-sm text-gray-600 dark:text-gray-200'>
-                                    14
-                                </div>
+                                <div className='text-sm text-gray-600'>14</div>
                             </div>
-                            <div className='text-gray-600 dark:text-gray-200'>
+                            <div className='text-gray-600'>
                                 <div className='h-12 w-12'>
                                     <UsersIcon />
                                 </div>
@@ -113,8 +103,7 @@ export const DashboardComponent = () => {
                 flex h-6 w-6  
                 items-center justify-center rounded-lg 
                 bg-gray-300 text-center text-base font-semibold 
-                text-gray-700 shadow-md transition duration-200 ease-in 
-                hover:bg-gray-400 focus:outline-none focus:ring-2  focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-blue-200 '
+                text-gray-700 shadow-md'
                     >
                         <SettingsIcon />
                     </button>
@@ -151,8 +140,7 @@ export const DashboardComponent = () => {
                 flex h-6 w-6  
                 items-center justify-center rounded-lg 
                 bg-gray-300 text-center text-base font-semibold 
-                text-gray-700 shadow-md transition duration-200 ease-in 
-                hover:bg-gray-400 focus:outline-none focus:ring-2  focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-blue-200 '
+                text-gray-700 shadow-md'
                     >
                         <SettingsIcon />
                     </button>

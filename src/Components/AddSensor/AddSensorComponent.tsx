@@ -90,7 +90,7 @@ export const AddSensorComponent = () => {
                                  bg-check h-6 w-6 rounded-md border border-gray-300 bg-white 
                                  checked:border-transparent checked:bg-gray-500 focus:outline-none'
                                     />
-                                    <span className='font-normal text-gray-700 dark:text-white'>
+                                    <span className='font-normal text-gray-700'>
                                         Monitor Min Temprature
                                     </span>
                                 </label>
@@ -113,7 +113,7 @@ export const AddSensorComponent = () => {
                                  bg-check h-6 w-6 rounded-md border border-gray-300 bg-white 
                                  checked:border-transparent checked:bg-gray-500 focus:outline-none'
                                     />
-                                    <span className='font-normal text-gray-700 dark:text-white'>
+                                    <span className='font-normal text-gray-700'>
                                         Monitor Max Temprature
                                     </span>
                                 </label>

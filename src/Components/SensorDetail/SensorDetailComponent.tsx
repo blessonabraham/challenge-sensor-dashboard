@@ -60,8 +60,7 @@ export const SensorDetailComponent = () => {
                 flex h-10 w-10  
                 items-center justify-center rounded-lg 
                 bg-gray-300 text-center text-base font-semibold 
-                text-gray-700 shadow-md transition duration-200 ease-in 
-                hover:bg-gray-400 focus:outline-none focus:ring-2  focus:ring-gray-400 focus:ring-offset-2 focus:ring-offset-blue-200 '
+                text-gray-700 shadow-md'
                 >
                     <BackIcon />
                 </Link>
@@ -74,18 +73,18 @@ export const SensorDetailComponent = () => {
             <div className='flex flex-row gap-6 border-2 border-solid'>
                 <div className='w-1/2 border-r-2 border-solid'>
                     <div>
-                        <ul className='divide flex flex-col justify-center divide-y gap-6'>
+                        <ul className='divide flex flex-col justify-center gap-6 divide-y'>
                             <li>
                                 <div className='flex flex-row justify-between p-4'>
                                     <div className='mr-16 flex-1 pl-1'>
-                                        <div className='font-medium dark:text-white'>
+                                        <div className='font-medium'>
                                             TOTAL MESSAGES
                                         </div>
-                                        <div className='text-sm text-gray-600 dark:text-gray-200'>
+                                        <div className='text-sm text-gray-600'>
                                             Total Messages this week
                                         </div>
                                     </div>
-                                    <div className='text-2xl text-gray-600 dark:text-gray-200'>
+                                    <div className='text-2xl text-gray-600'>
                                         {
                                             sensorDetails?.overview
                                                 ?.total_messages
@@ -96,14 +95,14 @@ export const SensorDetailComponent = () => {
                             <li>
                                 <div className='flex flex-row justify-between p-4'>
                                     <div className='mr-16 flex-1 pl-1'>
-                                        <div className='font-medium dark:text-white'>
+                                        <div className='font-medium'>
                                             DOWN TIME
                                         </div>
-                                        <div className='text-sm text-gray-600 dark:text-gray-200'>
+                                        <div className='text-sm text-gray-600'>
                                             Total down time
                                         </div>
                                     </div>
-                                    <div className='text-2xl text-gray-600 dark:text-gray-200'>
+                                    <div className='text-2xl text-gray-600'>
                                         {sensorDetails?.overview?.down_time}
                                         <span className='block text-sm'>
                                             Sec
@@ -114,14 +113,14 @@ export const SensorDetailComponent = () => {
                             <li>
                                 <div className='flex flex-row justify-between p-4'>
                                     <div className='mr-16 flex-1 pl-1'>
-                                        <div className='font-medium dark:text-white'>
+                                        <div className='font-medium'>
                                             ALERTS
                                         </div>
-                                        <div className='text-sm text-gray-600 dark:text-gray-200'>
+                                        <div className='text-sm text-gray-600'>
                                             System alerts this week
                                         </div>
                                     </div>
-                                    <div className='text-2xl text-gray-600 dark:text-gray-200'>
+                                    <div className='text-2xl text-gray-600'>
                                         {sensorDetails?.overview?.alerts}
                                     </div>
                                 </div>
@@ -154,7 +153,7 @@ export const SensorDetailComponent = () => {
             </div>
 
             <div className='border-2 border-solid p-4'>
-                <div className='flex flex-row justify-between  mb-5'>
+                <div className='mb-5 flex flex-row  justify-between'>
                     <p className='text-xl font-semibold text-gray-600'>
                         TEMPRATURE DAILY
                     </p>
@@ -166,7 +165,7 @@ export const SensorDetailComponent = () => {
                         <SettingsIcon />
                     </button>
                 </div>
-                <div className='h-60 mr-12'>
+                <div className='mr-12 h-60'>
                     <ResponsiveContainer width='100%' height='100%'>
                         <LineChart
                             width={500}
@@ -197,7 +196,7 @@ export const SensorDetailComponent = () => {
 
             <div className='flex flex-row gap-14'>
                 <div className='w-1/2'>
-                    <p className='text-xl font-semibold text-gray-600 mb-5'>
+                    <p className='mb-5 text-xl font-semibold text-gray-600'>
                         SYSTEM LOG
                     </p>
                     <div className='border-2 border-solid p-5'>
@@ -217,26 +216,26 @@ export const SensorDetailComponent = () => {
                     </div>
                 </div>
                 <div className='w-1/2'>
-                    <p className='text-xl font-semibold text-gray-600 mb-5'>
+                    <p className='mb-5 text-xl font-semibold text-gray-600'>
                         ACTIVITY
                     </p>
                     <div className='border-2 border-solid p-5'>
                         {sensorEvents?.map((data) => (
                             <div className='relative w-full overflow-hidden p-4 '>
                                 <div className='mb-6 flex items-start justify-between rounded'>
-                                    <span className='rounded-full bg-green-400 p-2 text-white dark:text-gray-800'>
+                                    <span className='text-whit rounded-full bg-green-400 p-2'>
                                         <ActivityIcon />
                                     </span>
                                     <div className='flex w-full items-center justify-between'>
                                         <div className='ml-2 flex w-full flex-col items-start justify-between text-sm'>
-                                            <p className='font-bold text-gray-700 dark:text-white'>
+                                            <p className='font-bold text-gray-700'>
                                                 {data?.event_name}
                                             </p>
                                             <p className='text-gray-300'>
                                                 {data?.time}
                                             </p>
 
-                                            <p className='text-gray-700 dark:text-white'>
+                                            <p className='text-gray-700'>
                                                 {data?.description}
                                             </p>
                                         </div>
