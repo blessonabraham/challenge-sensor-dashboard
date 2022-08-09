@@ -1,6 +1,11 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { API_ENDPOINTS } from '../Shared/Constants/Constants';
-import { getRequest } from '../Shared/NetworkService/NetworkService';
+import {
+    getRequest,
+    postRequest,
+    putRequest,
+} from '../Shared/NetworkService/NetworkService';
+import { AddSensorPayloadType } from '../Shared/Types/Types';
 import {
     tranformStatsForChart,
     tranformWeeklyAvgStatsForChart,
@@ -102,6 +107,26 @@ export const fetchSensorEventsAction = createAsyncThunk(
                     deviceId +
                     API_ENDPOINTS.GET_SENSOR_EVENTS,
             );
+            return results;
+        } catch {}
+    },
+);
+
+export const addSensorAction = createAsyncThunk(
+    'sensor/addSensorAction',
+    async (payload: AddSensorPayloadType) => {
+        try {
+            const { results } = await postRequest(API_ENDPOINTS.GET_SENSOR, payload);
+            return results;
+        } catch {}
+    },
+);
+
+export const updateSensorAction = createAsyncThunk(
+    'sensor/updateSensorAction',
+    async (payload: AddSensorPayloadType) => {
+        try {
+            const { results } = await putRequest(API_ENDPOINTS.GET_SENSOR, payload);
             return results;
         } catch {}
     },

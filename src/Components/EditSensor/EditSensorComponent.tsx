@@ -1,67 +1,76 @@
-import { Formik } from 'formik';
-import { useParams } from 'react-router-dom';
+import { Field, Formik } from 'formik';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useParams } from 'react-router-dom';
+import { State } from '../../Shared/Types/Types';
+import { addSensorAction, fetchSensorDetailsAction, updateSensorAction } from '../../Store/Actions';
+import { AppDispatch } from '../../Store/Store';
 
 export const EditSensorComponent = () => {
     const { sensorId } = useParams();
+    const dispatch = useDispatch<AppDispatch>();
+    const { sensorDetails } = useSelector((state: State) => state);
+
+    useEffect(() => {
+        if (sensorId) {
+            dispatch(fetchSensorDetailsAction(sensorId));
+        }
+    }, [sensorId]);
 
     return (
         <Formik
-            initialValues={{ sensorId: sensorId, location: '', customer: '' }}
+            initialValues={{
+                sensorId: sensorDetails?.device_id,
+                location: sensorDetails?.location,
+                minTempThreshold: '',
+                maxTempThreshold: '',
+                monitorMinTemp: false,
+                monitorMaxTemp: false,
+            }}
+            enableReinitialize={true}
             validate={() => {}}
             onSubmit={(values, { setSubmitting }) => {
-                setTimeout(() => {
-                    alert(JSON.stringify(values, null, 2));
-                    setSubmitting(false);
-                }, 400);
+                dispatch(
+                    updateSensorAction({
+                        company_website: values.sensorId,
+                        max_temp_limit: Number(values.maxTempThreshold),
+                        min_temp_limit: Number(values.minTempThreshold),
+                        monitor_max_temp: values.monitorMaxTemp,
+                        monitor_min_temp: values.monitorMinTemp,
+                    }),
+                );
+                setSubmitting(false);
             }}
         >
-            {({
-                values,
-                isSubmitting,
-                handleSubmit,
-                handleChange,
-                handleBlur,
-            }) => (
+            {({ isSubmitting, handleSubmit }) => (
                 <form onSubmit={handleSubmit}>
                     <div className='flex flex-row gap-14'>
                         <div className='w-3/5'>
                             <h1 className=' border-b-2 pb-5 text-3xl font-thin'>
-                                Edit Sensor -{' '}
-                                <span className='font-bold text-gray-600'>
-                                    nrf-881277
-                                </span>
+                                Edit Sensor
                             </h1>
                             <div className=' mt-5 flex w-1/2 flex-col gap-5'>
                                 <h1 className='text-2xl font-semibold'>
                                     {sensorId}
                                 </h1>
 
-                                <input
+                                <Field
                                     type='text'
                                     name='location'
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    value={values.location}
                                     id='location'
-                                    className='w-full flex-1 
-                                    appearance-none rounded-lg border border-transparent border-gray-300 bg-white py-2 
-                                    px-4 text-base text-gray-700 placeholder-gray-400 
-                                    shadow-sm focus:border-transparent focus:outline-none focus:ring-2 
-                                    focus:ring-purple-600'
+                                    className='w-full flex-1 appearance-none rounded-lg border border-transparent 
+                                    border-gray-300 bg-white py-2 px-4 text-base text-gray-700 placeholder-gray-400 shadow-sm'
                                     placeholder='Location'
                                 />
-                                <select
-                                    id='Currency'
-                                    name='currency'
-                                    className='h-full rounded-lg border 
-                                border-gray-300 border-transparent bg-transparent 
-                                py-3 px-4 pl-2 pr-7 text-gray-500 
-                                focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm'
+
+                                <Field
+                                    name='customer'
+                                    as='select'
+                                    className='h-full rounded-lg border border-gray-300 border-transparent 
+                                    bg-transparent py-3 px-4 pl-2 pr-7 text-gray-500'
                                 >
-                                    <option value='' disabled selected>
-                                        Customer
-                                    </option>
-                                </select>
+                                    <option value='red'>Customer 1</option>
+                                </Field>
                             </div>
                         </div>
 
@@ -70,58 +79,45 @@ export const EditSensorComponent = () => {
                                 Alerts
                             </h1>
                             <div className=' mt-5 flex w-2/3 flex-col gap-5'>
-                                <input
+                                <Field
                                     type='text'
                                     name='minTempThreshold'
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    value={values.sensorId}
                                     id='minTempThreshold'
-                                    className='w-full flex-1 
-                                    appearance-none rounded-lg border border-transparent border-gray-300 bg-white py-2 
-                                    px-4 text-base text-gray-700 placeholder-gray-400 
-                                    shadow-sm focus:border-transparent focus:outline-none focus:ring-2 
-                                    focus:ring-purple-600'
+                                    className='w-full flex-1 appearance-none rounded-lg border border-transparent 
+                                    border-gray-300 bg-white py-2 px-4 text-base text-gray-700 placeholder-gray-400 shadow-sm'
                                     placeholder='Min Temp. Threshold'
                                 />
 
                                 <label className='mb-3 flex items-center space-x-3'>
-                                    <input
+                                    <Field
                                         type='checkbox'
-                                        name='checked-demo'
-                                        checked
+                                        name='monitorMinTemp'
                                         className=' 
-                                    bg-check h-6 w-6 rounded-md border border-gray-300 bg-white 
-                                    checked:border-transparent checked:bg-gray-500 focus:outline-none'
+                                 bg-check h-6 w-6 rounded-md border border-gray-300 bg-white 
+                                 checked:border-transparent checked:bg-gray-500 focus:outline-none'
                                     />
                                     <span className='font-normal text-gray-700 dark:text-white'>
                                         Monitor Min Temprature
                                     </span>
                                 </label>
 
-                                <input
+                                <Field
                                     type='text'
                                     name='maxTempThreshold'
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    value={values.sensorId}
                                     id='maxTempThreshold'
-                                    className='w-full flex-1 
-                                    appearance-none rounded-lg border border-transparent border-gray-300 bg-white py-2 
-                                    px-4 text-base text-gray-700 placeholder-gray-400 
-                                    shadow-sm focus:border-transparent focus:outline-none focus:ring-2 
-                                    focus:ring-purple-600'
+                                    className='w-full flex-1 appearance-none rounded-lg border border-transparent 
+                                    border-gray-300 bg-white py-2 px-4 text-base text-gray-700 placeholder-gray-400 shadow-sm'
                                     placeholder='Max Temp. Threshold'
                                 />
 
                                 <label className='mb-3 flex items-center space-x-3'>
-                                    <input
+                                    <Field
                                         type='checkbox'
-                                        name='checked-demo'
-                                        checked
-                                        className='form-tick 
-                                    bg-check h-6 w-6 rounded-md border border-gray-300 bg-white checked:border-transparent 
-                                    checked:bg-blue-500 focus:outline-none'
+                                        name='monitorMaxTemp'
+                                        id='monitorMaxTemp'
+                                        className=' 
+                                 bg-check h-6 w-6 rounded-md border border-gray-300 bg-white 
+                                 checked:border-transparent checked:bg-gray-500 focus:outline-none'
                                     />
                                     <span className='font-normal text-gray-700 dark:text-white'>
                                         Monitor Max Temprature
@@ -137,21 +133,20 @@ export const EditSensorComponent = () => {
                             disabled={isSubmitting}
                             className='flex w-52 items-center justify-center rounded-lg  
                         bg-gray-600 py-2 px-4 text-center 
-                        text-base font-normal text-white shadow-md transition duration-200 ease-in 
-                        hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:ring-offset-gray-200'
+                        text-base font-normal text-white shadow-md'
                         >
                             Update Sensor
                         </button>
 
-                        <button
+                        <Link
+                            to='/'
                             type='button'
                             className='flex w-52 items-center justify-center rounded-lg  
                         bg-gray-200 py-2 px-4 text-center 
-                         text-base font-normal text-gray-600 shadow-md transition duration-200 ease-in 
-                        hover:bg-gray-300 focus:outline-none focus:ring-2 focus:ring-gray-300 focus:ring-offset-2 focus:ring-offset-gray-200'
+                         text-base font-normal text-gray-600 shadow-md'
                         >
                             Cancel
-                        </button>
+                        </Link>
                     </div>
                 </form>
             )}

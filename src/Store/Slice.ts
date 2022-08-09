@@ -9,6 +9,7 @@ import {
     StatsListType,
 } from '../Shared/Types/Types';
 import {
+    addSensorAction,
     fetchSensorDetailsAction,
     fetchSensorEventsAction,
     fetchSensorListAction,
@@ -17,6 +18,7 @@ import {
     fetchSensorWeeklyAvgStatsAction,
     fetchSensorWeeklyStatsAction,
     setToggleDrawerAction,
+    updateSensorAction,
 } from './Actions';
 
 const initialState: State = {
@@ -132,6 +134,24 @@ const slice = createSlice({
             state.isLoading = false;
         },
         [fetchSensorEventsAction.rejected.toString()]: (state: State) => {
+            state.isLoading = false;
+        },
+        [addSensorAction.pending.toString()]: (state: State) => {
+            state.isLoading = true;
+        },
+        [addSensorAction.fulfilled.toString()]: (state: State) => {
+            state.isLoading = false;
+        },
+        [addSensorAction.rejected.toString()]: (state: State) => {
+            state.isLoading = false;
+        },
+        [updateSensorAction.pending.toString()]: (state: State) => {
+            state.isLoading = true;
+        },
+        [updateSensorAction.fulfilled.toString()]: (state: State) => {
+            state.isLoading = false;
+        },
+        [updateSensorAction.rejected.toString()]: (state: State) => {
             state.isLoading = false;
         },
     },
