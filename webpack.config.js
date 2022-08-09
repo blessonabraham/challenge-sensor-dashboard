@@ -30,12 +30,7 @@ module.exports = {
             {
                 test: /\.(ts|tsx)?$/,
                 use: [{
-                    loader: 'babel-loader',
-                    options: {
-                        presets: ["@babel/preset-typescript", ["@babel/preset-react", {
-                            "runtime": "automatic"
-                        }]]
-                    }
+                    loader: 'babel-loader'
                 }],
                 exclude: /[\\/]node_modules[\\/]/
             },

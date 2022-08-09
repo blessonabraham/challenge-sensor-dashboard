@@ -3,17 +3,21 @@
         "jsx": "react-jsx",
         "strict": true,
         "removeComments": true,
-        "sourceMap": true,
+        "sourceMap": false,
         "noImplicitAny": true,
         "noUnusedLocals": true,
         "noUnusedParameters": true,
-        "strictNullChecks": false
+        "strictNullChecks": false,
+        "skipLibCheck": true,
+        "noEmit": true,
+        "esModuleInterop": true
     },
     "include": [
         "src/*", "src/**/*", "src/**/**/*"
     ],
     "exclude": [
         "node_modules",
-        "**/*.spec.ts"
+        "**/*.spec.ts",
+        "*.test.*"
     ]
 }

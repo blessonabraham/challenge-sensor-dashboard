@@ -9,7 +9,9 @@ export const API_ENDPOINTS = {
 };
 
 export const ADD_SENSOR = {
-    TITLE: '',
+    NEW_SENSOR: 'New Sensor',
+    ALERTS: 'Alerts',
+    ADD_SENSOR: 'Add Sensor'
 };
 
 export const EDIT_SENSOR = {

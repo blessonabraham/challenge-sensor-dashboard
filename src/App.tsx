@@ -6,7 +6,5 @@ import "./App.scss"
 // Caching
 // Unit Tests
 // ReadMe
-// Search Icon
 // Move text to constants
-
 createRoot(document.getElementById('root') as HTMLElement).render(<Store/>)

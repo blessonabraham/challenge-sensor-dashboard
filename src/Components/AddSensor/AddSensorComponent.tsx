@@ -1,6 +1,7 @@
 import { Field, Formik } from 'formik';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { ADD_SENSOR } from '../../Shared/Constants/Constants';
 import { addSensorAction } from '../../Store/Actions';
 import { AppDispatch } from '../../Store/Store';
 
@@ -22,6 +23,7 @@ export const AddSensorComponent = () => {
                 dispatch(
                     addSensorAction({
                         company_website: values.sensorId,
+                        device_id: values.sensorId,
                         max_temp_limit: Number(values.maxTempThreshold),
                         min_temp_limit: Number(values.minTempThreshold),
                         monitor_max_temp: values.monitorMaxTemp,
@@ -36,7 +38,7 @@ export const AddSensorComponent = () => {
                     <div className='flex flex-row gap-14'>
                         <div className='w-3/5'>
                             <h1 className=' border-b-2 pb-5 text-3xl font-thin'>
-                                New Sensor
+                                {ADD_SENSOR.NEW_SENSOR}
                             </h1>
                             <div className=' mt-5 flex w-1/2 flex-col gap-5'>
                                 <Field
@@ -70,7 +72,7 @@ export const AddSensorComponent = () => {
 
                         <div className='grow'>
                             <h1 className='border-b-2 pb-5 text-3xl font-thin'>
-                                Alerts
+                                {ADD_SENSOR.ALERTS}
                             </h1>
                             <div className=' mt-5 flex w-2/3 flex-col gap-5'>
                                 <Field
@@ -129,7 +131,7 @@ export const AddSensorComponent = () => {
                             bg-gray-600 py-2 px-4 text-center 
                             text-base font-normal text-white shadow-md'
                         >
-                            Add Sensor
+                            {ADD_SENSOR.ADD_SENSOR}
                         </button>
 
                         <Link
