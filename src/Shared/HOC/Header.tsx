@@ -7,17 +7,17 @@ export const Header = () => {
     const { toggleDrawer } = useSelector((state: State) => state);
     const dispatch = useDispatch();
 
+    const toggleDrawerAction = () => {
+        dispatch(setToggleDrawerAction());
+    };
+
     return (
         <div>
             <nav className='bg-white shadow'>
                 <div className='mx-auto px-8'>
                     <div className='flex h-16 items-center justify-between'>
                         <div className='flex items-center gap-5'>
-                            <span
-                                onClick={() =>
-                                    dispatch(setToggleDrawerAction())
-                                }
-                            >
+                            <span onClick={toggleDrawerAction}>
                                 {toggleDrawer && (
                                     <div className='h-8 w-8'>
                                         <CloseIcon />

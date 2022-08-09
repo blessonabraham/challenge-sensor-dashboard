@@ -1,5 +1,6 @@
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { setToggleDrawerAction } from '../../Store/Actions';
 import {
     HomeIcon,
     ReportDocumentIcon,
@@ -7,11 +8,17 @@ import {
     UsersIcon,
     SettingsIcon,
     AddIcon,
+    SearchIcon,
 } from '../Icons/SVGIcons';
 import { State } from '../Types/Types';
 
 export const SideMenu = () => {
     const { toggleDrawer } = useSelector((state: State) => state);
+    const dispatch = useDispatch();
+
+    const toggleDrawerAction = () => {
+        dispatch(setToggleDrawerAction());
+    };
 
     return (
         <>
@@ -21,6 +28,16 @@ export const SideMenu = () => {
                         <div className='mt-1 mb-10'>
                             <div className='mt-10'>
                                 <ul>
+                                    <li className='my-12 ml-7 cursor-pointer text-center'>
+                                        <span
+                                            onClick={toggleDrawerAction}
+                                            className='mx-auto text-gray-500 transition-colors duration-200 hover:text-gray-800'
+                                        >
+                                            <div className='h-6 w-6'>
+                                                <SearchIcon />
+                                            </div>
+                                        </span>
+                                    </li>
                                     <li className='my-12 ml-7 text-center'>
                                         <Link to='/'>
                                             <span className='mx-auto text-gray-500 transition-colors duration-200 hover:text-gray-800'>
@@ -79,6 +96,22 @@ export const SideMenu = () => {
                     <div className='flex flex-col sm:flex-row sm:justify-around'>
                         <div className='h-screen w-72'>
                             <nav className='mt-10 px-6 '>
+                                <div className='my-6 flex items-center rounded-lg p-2 text-gray-600 transition-colors duration-200 hover:bg-gray-100 hover:text-gray-800'>
+                                    <div className='relative flex '>
+                                        <span className='inline-flex items-center rounded-l-md bg-white px-3 text-sm text-gray-500 shadow-sm'>
+                                            <div className='h-4 w-4'>
+                                                <SearchIcon />
+                                            </div>
+                                        </span>
+                                        <input
+                                            type='text'
+                                            id='search'
+                                            className=' w-full flex-1 appearance-none rounded-r-lg  bg-white py-2 px-4 text-base text-gray-700 placeholder-gray-400 shadow-sm focus:border-transparent focus:outline-none focus:ring-2 focus:ring-purple-600'
+                                            name='search'
+                                            placeholder='Search...'
+                                        />
+                                    </div>
+                                </div>
                                 <Link
                                     to='/'
                                     className='my-6 flex items-center rounded-lg p-2 text-gray-600 transition-colors duration-200 hover:bg-gray-100 hover:text-gray-800'

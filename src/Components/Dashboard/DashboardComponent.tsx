@@ -163,7 +163,7 @@ export const DashboardComponent = () => {
                                 key={i}
                                 className=' flex flex-row p-5 even:bg-slate-100'
                             >
-                                <div className='w-1/6 text-lg font-semibold text-gray-700'>
+                                <div className='w-1/6 font-semibold text-gray-700'>
                                     {data?.device_id}
                                 </div>
                                 <div className='w-1/6 text-gray-600'>
