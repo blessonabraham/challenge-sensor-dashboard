@@ -1,5 +1,6 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
 import { API_ENDPOINTS } from '../Shared/Constants/Constants';
+import { Logger } from '../Shared/LoggerService/LoggerService';
 import {
     getRequest,
     postRequest,
@@ -24,7 +25,9 @@ export const fetchSensorListAction = createAsyncThunk(
                 page,
             });
             return result;
-        } catch {}
+        } catch (e) {
+            Logger('fetchSensorListAction:: ' + JSON.stringify(e));
+        }
     },
 );
 
@@ -36,7 +39,9 @@ export const fetchSensorStatsAction = createAsyncThunk(
                 API_ENDPOINTS.GET_SENSOR_STATS,
             );
             return tranformStatsForChart(results);
-        } catch {}
+        } catch (e) {
+            Logger('fetchSensorStatsAction:: ' + JSON.stringify(e));
+        }
     },
 );
 
@@ -48,7 +53,9 @@ export const fetchSensorDetailsAction = createAsyncThunk(
                 API_ENDPOINTS.GET_SENSOR + '/' + deviceId,
             );
             return result;
-        } catch {}
+        } catch (e) {
+            Logger('fetchSensorDetailsAction:: ' + JSON.stringify(e));
+        }
     },
 );
 
@@ -63,7 +70,9 @@ export const fetchSensorWeeklyStatsAction = createAsyncThunk(
                     API_ENDPOINTS.GET_SENSOR_STATS_WEEKLY,
             );
             return tranformWeeklyStatsForChart(results);
-        } catch {}
+        } catch (e) {
+            Logger('fetchSensorWeeklyStatsAction:: ' + JSON.stringify(e));
+        }
     },
 );
 
@@ -78,7 +87,9 @@ export const fetchSensorWeeklyAvgStatsAction = createAsyncThunk(
                     API_ENDPOINTS.GET_SENSOR_STATS_WEEKLY_AVG,
             );
             return tranformWeeklyAvgStatsForChart(results);
-        } catch {}
+        } catch (e) {
+            Logger('fetchSensorWeeklyAvgStatsAction:: ' + JSON.stringify(e));
+        }
     },
 );
 
@@ -93,7 +104,9 @@ export const fetchSensorLogsAction = createAsyncThunk(
                     API_ENDPOINTS.GET_SENSOR_LOGS,
             );
             return results;
-        } catch {}
+        } catch (e) {
+            Logger('fetchSensorLogsAction:: ' + JSON.stringify(e));
+        }
     },
 );
 
@@ -108,7 +121,9 @@ export const fetchSensorEventsAction = createAsyncThunk(
                     API_ENDPOINTS.GET_SENSOR_EVENTS,
             );
             return results;
-        } catch {}
+        } catch (e) {
+            Logger('fetchSensorEventsAction:: ' + JSON.stringify(e));
+        }
     },
 );
 
@@ -116,9 +131,14 @@ export const addSensorAction = createAsyncThunk(
     'sensor/addSensorAction',
     async (payload: AddSensorPayloadType) => {
         try {
-            const { results } = await postRequest(API_ENDPOINTS.GET_SENSOR, payload);
+            const { results } = await postRequest(
+                API_ENDPOINTS.GET_SENSOR,
+                payload,
+            );
             return results;
-        } catch {}
+        } catch (e) {
+            Logger('addSensorAction:: ' + JSON.stringify(e));
+        }
     },
 );
 
@@ -126,8 +146,13 @@ export const updateSensorAction = createAsyncThunk(
     'sensor/updateSensorAction',
     async (payload: AddSensorPayloadType) => {
         try {
-            const { results } = await putRequest(API_ENDPOINTS.GET_SENSOR, payload);
+            const { results } = await putRequest(
+                API_ENDPOINTS.GET_SENSOR,
+                payload,
+            );
             return results;
-        } catch {}
+        } catch (e) {
+            Logger('updateSensorAction:: ' + JSON.stringify(e));
+        }
     },
 );

@@ -16,7 +16,7 @@ export const FrameHOC = (WrappedComponent: FunctionComponent) => {
                     <Header />
                     <div className='flex flex-row'>
                         <SideMenu />
-                        <div className='container mx-auto px-8 py-8'>
+                        <div className='container p-8'>
                             <WrappedComponent />
                         </div>
                     </div>

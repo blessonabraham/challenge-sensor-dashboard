@@ -3,7 +3,7 @@ import { AddSensorComponent } from '../Components/AddSensor/AddSensorComponent';
 import { DashboardComponent } from '../Components/Dashboard/DashboardComponent';
 import { EditSensorComponent } from '../Components/EditSensor/EditSensorComponent';
 import { SensorDetailComponent } from '../Components/SensorDetail/SensorDetailComponent';
-import { FrameHOC } from '../Shared/FrameHOC/FrameHOC';
+import { FrameHOC } from '../Shared/HOC/FrameHOC';
 
 const FramedRoutes = FrameHOC(() => (
     <Routes>
