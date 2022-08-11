@@ -4,7 +4,7 @@
     "description": "",
     "main": "./src/App.tsx",
     "scripts": {
-        "serve": "tsc & webpack serve --mode development --port 3000 --open",
+        "start": "tsc & webpack serve --mode development --port 3000 --open",
         "build-dev": "tsc && webpack --mode development",
         "build-prod": "tsc && webpack --mode production",
         "test": "jest --watchAll",
