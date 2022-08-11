@@ -84,7 +84,10 @@ export const SensorDetailComponent = () => {
                                             Total Messages this week
                                         </div>
                                     </div>
-                                    <div className='text-2xl text-gray-600'>
+                                    <div
+                                        id='totalMessages'
+                                        className='text-2xl text-gray-600'
+                                    >
                                         {
                                             sensorDetails?.overview
                                                 ?.total_messages
@@ -103,7 +106,9 @@ export const SensorDetailComponent = () => {
                                         </div>
                                     </div>
                                     <div className='text-2xl text-gray-600'>
-                                        {sensorDetails?.overview?.down_time}
+                                        <span id='downTime'>
+                                            {sensorDetails?.overview?.down_time}
+                                        </span>
                                         <span className='block text-sm'>
                                             Sec
                                         </span>
@@ -121,7 +126,9 @@ export const SensorDetailComponent = () => {
                                         </div>
                                     </div>
                                     <div className='text-2xl text-gray-600'>
-                                        {sensorDetails?.overview?.alerts}
+                                        <span id='alerts'>
+                                            {sensorDetails?.overview?.alerts}
+                                        </span>
                                     </div>
                                 </div>
                             </li>
@@ -135,7 +142,7 @@ export const SensorDetailComponent = () => {
                         </p>
                     </div>
                     <div className='mb-5 h-60 w-full pr-14'>
-                        <ResponsiveContainer width='100%' height='100%'>
+                        <ResponsiveContainer width='100%' height='100%' id='sensorWeeklyStatsChart'>
                             <AreaChart data={sensorWeeklyStats}>
                                 <CartesianGrid strokeDasharray='3 3' />
                                 <XAxis dataKey='date' />
@@ -166,7 +173,7 @@ export const SensorDetailComponent = () => {
                     </button>
                 </div>
                 <div className='mr-12 h-60'>
-                    <ResponsiveContainer width='100%' height='100%'>
+                    <ResponsiveContainer width='100%' height='100%' id='sensorWeeklyAvgStatsChart'>
                         <LineChart
                             width={500}
                             height={300}
@@ -202,7 +209,7 @@ export const SensorDetailComponent = () => {
                     <div className='border-2 border-solid p-5'>
                         <ol className='relative border-l border-gray-400'>
                             {sensorLogs?.map((data, i) => (
-                                <li className='mb-10 ml-4' key={i}>
+                                <li className='mb-10 ml-4' key={i} id='systemLogRow'>
                                     <div className='absolute -left-1.5 h-3 w-3 rounded-full border border-white bg-gray-400'></div>
                                     <time className='mb-1 text-sm font-normal leading-none text-gray-400'>
                                         {data.time}
@@ -221,7 +228,7 @@ export const SensorDetailComponent = () => {
                     </p>
                     <div className='border-2 border-solid p-5'>
                         {sensorEvents?.map((data) => (
-                            <div className='relative w-full overflow-hidden p-4 '>
+                            <div className='relative w-full overflow-hidden p-4' id='activityRow'>
                                 <div className='mb-6 flex items-start justify-between rounded'>
                                     <span className='text-whit rounded-full bg-green-400 p-2'>
                                         <ActivityIcon />

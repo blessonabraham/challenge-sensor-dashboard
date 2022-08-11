@@ -2,6 +2,7 @@ import { Field, Formik } from 'formik';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate, useParams } from 'react-router-dom';
+import { EDIT_SENSOR } from '../../Shared/Constants/Constants';
 import { State } from '../../Shared/Types/Types';
 import {
     deleteSensorAction,
@@ -23,7 +24,7 @@ export const EditSensorComponent = () => {
     }, [sensorId]);
 
     const deleteSensor = () => {
-        dispatch(deleteSensorAction(sensorId));
+        dispatch(deleteSensorAction(sensorDetails?.device_id));
         navigate('/');
     };
 
@@ -58,11 +59,14 @@ export const EditSensorComponent = () => {
                     <div className='flex flex-row gap-14'>
                         <div className='w-3/5'>
                             <h1 className=' border-b-2 pb-5 text-3xl font-thin'>
-                                Edit Sensor
+                                {EDIT_SENSOR.EDIT_SENSOR}
                             </h1>
                             <div className=' mt-5 flex w-1/2 flex-col gap-5'>
-                                <h1 className='text-2xl font-semibold'>
-                                    {sensorId}
+                                <h1
+                                    id='sensorId'
+                                    className='text-2xl font-semibold'
+                                >
+                                    {sensorDetails?.device_id}
                                 </h1>
 
                                 <Field
@@ -146,7 +150,7 @@ export const EditSensorComponent = () => {
                         bg-gray-600 py-2 px-4 text-center 
                         text-base font-normal text-white shadow-md'
                         >
-                            Update Sensor
+                            {EDIT_SENSOR.UPDATE_SENSOR}
                         </button>
 
                         <button
@@ -156,7 +160,7 @@ export const EditSensorComponent = () => {
                         bg-gray-600 py-2 px-4 text-center 
                         text-base font-normal text-white shadow-md'
                         >
-                            Delete Sensor
+                           {EDIT_SENSOR.DELETE_SENSOR}
                         </button>
 
                         <Link

@@ -1,5 +1,7 @@
+export const BASE_URL = 'http://localhost:3009';
+
 export const API_ENDPOINTS = {
-    ROOT: 'http://localhost:3009',
+    ROOT: BASE_URL,
     GET_SENSOR: '/sensor',
     GET_SENSOR_STATS: '/sensor/stats',
     GET_SENSOR_STATS_WEEKLY: '/stats/weekly',
@@ -15,11 +17,15 @@ export const ADD_SENSOR = {
 };
 
 export const EDIT_SENSOR = {
-    TITLE: '',
+    EDIT_SENSOR: 'Edit Sensor',
+    UPDATE_SENSOR: 'Update Sensor',
+    DELETE_SENSOR: 'Delete Sensor'
 };
 
 export const SENSOR_DASHBOARD = {
-    TITLE: '',
+    TOTAL_SENSORS: 'TOTAL SENSORS',
+    OPEN_ALERTS: 'OPEN ALERTS',
+    TOTAL_CUSTOMERS: 'TOTAL CUSTOMERS'
 };
 
 export const SENSOR_DETAILS = {

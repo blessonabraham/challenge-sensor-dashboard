@@ -28,6 +28,7 @@ export const fetchSensorListAction = createAsyncThunk(
             return result;
         } catch (e) {
             Logger('fetchSensorListAction:: ' + JSON.stringify(e));
+            throw e
         }
     },
 );
@@ -42,6 +43,7 @@ export const fetchSensorStatsAction = createAsyncThunk(
             return tranformStatsForChart(results);
         } catch (e) {
             Logger('fetchSensorStatsAction:: ' + JSON.stringify(e));
+            throw e
         }
     },
 );
@@ -56,6 +58,7 @@ export const fetchSensorDetailsAction = createAsyncThunk(
             return result;
         } catch (e) {
             Logger('fetchSensorDetailsAction:: ' + JSON.stringify(e));
+            throw e
         }
     },
 );
@@ -73,6 +76,7 @@ export const fetchSensorWeeklyStatsAction = createAsyncThunk(
             return tranformWeeklyStatsForChart(results);
         } catch (e) {
             Logger('fetchSensorWeeklyStatsAction:: ' + JSON.stringify(e));
+            throw e
         }
     },
 );
@@ -90,6 +94,7 @@ export const fetchSensorWeeklyAvgStatsAction = createAsyncThunk(
             return tranformWeeklyAvgStatsForChart(results);
         } catch (e) {
             Logger('fetchSensorWeeklyAvgStatsAction:: ' + JSON.stringify(e));
+            throw e
         }
     },
 );
@@ -107,6 +112,7 @@ export const fetchSensorLogsAction = createAsyncThunk(
             return results;
         } catch (e) {
             Logger('fetchSensorLogsAction:: ' + JSON.stringify(e));
+            throw e
         }
     },
 );
@@ -124,6 +130,7 @@ export const fetchSensorEventsAction = createAsyncThunk(
             return results;
         } catch (e) {
             Logger('fetchSensorEventsAction:: ' + JSON.stringify(e));
+            throw e
         }
     },
 );
@@ -139,6 +146,7 @@ export const addSensorAction = createAsyncThunk(
             return results;
         } catch (e) {
             Logger('addSensorAction:: ' + JSON.stringify(e));
+            throw e
         }
     },
 );
@@ -154,6 +162,7 @@ export const updateSensorAction = createAsyncThunk(
             return results;
         } catch (e) {
             Logger('updateSensorAction:: ' + JSON.stringify(e));
+            throw e
         }
     },
 );
@@ -168,6 +177,7 @@ export const deleteSensorAction = createAsyncThunk(
             return results;
         } catch (e) {
             Logger('updateSensorAction:: ' + JSON.stringify(e));
+            throw e
         }
     },
 );

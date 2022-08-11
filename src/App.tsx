@@ -4,7 +4,6 @@ import "./App.scss"
 
 // To-DO
 // Caching
-// Unit Tests
 // ReadMe
 // Move text to constants
 createRoot(document.getElementById('root') as HTMLElement).render(<Store/>)

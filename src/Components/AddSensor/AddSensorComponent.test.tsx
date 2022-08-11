@@ -22,28 +22,47 @@ describe('AddSensorComponent', () => {
         );
     };
 
-    test('Should render AddSensorComponent', () => {
-        const { container } = renderWithStoreHistory();
-        expect(container).toBeInTheDocument();
-    });
-
-    test('Should check for titles', () => {
+    test('Should New Sensor & Alerts Titles be in document', () => {
         const { getByText } = renderWithStoreHistory();
         expect(getByText(ADD_SENSOR.NEW_SENSOR)).toBeInTheDocument();
         expect(getByText(ADD_SENSOR.ALERTS)).toBeInTheDocument();
     });
 
-    test('Should check for Input fields', () => {
-        const { container } = renderWithStoreHistory();
-        expect(container.querySelector('#sensorId')).toBeInTheDocument();
-    });
-
-    test('Should add the sensor on "Add Sensor" button click', async () => {
+    test('Should trigger add sensor action on "Add Sensor" button click', async () => {
         const addSensorAction = jest.spyOn(Actions, 'addSensorAction');
-        const { getByText } = renderWithStoreHistory();
+        const { getByText, container } = renderWithStoreHistory();
+        await act(() => {
+            fireEvent.change(container.querySelector('#sensorId'), {
+                target: { value: 'sensorId' },
+            });
+        });
+        await act(() => {
+            fireEvent.change(container.querySelector('#location'), {
+                target: { value: 'location' },
+            });
+        });
+        await act(() => {
+            fireEvent.change(container.querySelector('#minTempThreshold'), {
+                target: { value: '10' },
+            });
+        });
+        await act(() => {
+            fireEvent.change(container.querySelector('#maxTempThreshold'), {
+                target: { value: '10' },
+            });
+        });
         await act(() => {
             fireEvent.click(getByText(ADD_SENSOR.ADD_SENSOR));
         });
-       await waitFor(() => expect(addSensorAction).toBeCalled())
+        await waitFor(() =>
+            expect(addSensorAction).toBeCalledWith({
+                company_website: 'sensorId',
+                device_id: 'sensorId',
+                max_temp_limit: 10,
+                min_temp_limit: 10,
+                monitor_max_temp: false,
+                monitor_min_temp: false,
+            }),
+        );
     });
 });

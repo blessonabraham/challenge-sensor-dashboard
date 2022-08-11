@@ -11,6 +11,7 @@ import {
     XAxis,
     YAxis,
 } from 'recharts';
+import { SENSOR_DASHBOARD } from '../../Shared/Constants/Constants';
 import {
     AlertIcon,
     SensorIcon,
@@ -49,10 +50,10 @@ export const DashboardComponent = () => {
                             <div className='flex flex-1 cursor-pointer select-none items-center p-4'>
                                 <div className='mr-16 flex-1 pl-1'>
                                     <div className='font-medium'>
-                                        TOTAL SENSORS
+                                        {SENSOR_DASHBOARD.TOTAL_SENSORS}
                                     </div>
                                     <div className='text-sm text-gray-600'>
-                                        182
+                                        <span id='totalSensors'>182</span>
                                     </div>
                                 </div>
                                 <div className='text-gray-600'>
@@ -68,10 +69,10 @@ export const DashboardComponent = () => {
                             <div className='flex flex-1 cursor-pointer select-none items-center p-4'>
                                 <div className='mr-16 flex-1 pl-1'>
                                     <div className='font-medium'>
-                                        OPEN ALERTS
+                                        {SENSOR_DASHBOARD.OPEN_ALERTS}
                                     </div>
                                     <div className='text-sm text-gray-600'>
-                                        2
+                                        <span id='openAlerts'>2</span>
                                     </div>
                                 </div>
                                 <div className='text-gray-600'>
@@ -87,10 +88,10 @@ export const DashboardComponent = () => {
                             <div className='flex flex-1 cursor-pointer select-none items-center p-4'>
                                 <div className='mr-16 flex-1 pl-1'>
                                     <div className='font-medium'>
-                                        TOTAL CUSTOMERS
+                                        {SENSOR_DASHBOARD.TOTAL_CUSTOMERS}
                                     </div>
                                     <div className='text-sm text-gray-600'>
-                                        14
+                                        <span id='totalCustomers'>14</span>
                                     </div>
                                 </div>
                                 <div className='text-gray-600'>
@@ -120,7 +121,11 @@ export const DashboardComponent = () => {
                         </button>
                     </div>
                     <div className='h-full w-full pr-10 pb-5'>
-                        <ResponsiveContainer width='100%' height='100%'>
+                        <ResponsiveContainer
+                            width='100%'
+                            height='100%'
+                            id='sensorTempratureChart'
+                        >
                             <LineChart data={sensorStats?.statsList}>
                                 <CartesianGrid strokeDasharray='3 3' />
                                 <XAxis dataKey='date' />
@@ -140,7 +145,7 @@ export const DashboardComponent = () => {
                     </div>
                 </div>
 
-                <div ref={sesnorListRef}>
+                <div ref={sesnorListRef} id='sensorList'>
                     <div className=' flex flex-row justify-between p-2'>
                         <p className='text-xl font-semibold text-gray-600'>
                             SENSOR LIST
@@ -148,10 +153,10 @@ export const DashboardComponent = () => {
                         <button
                             type='button'
                             className='
-                flex h-6 w-6  
-                items-center justify-center rounded-lg 
-                bg-gray-300 text-center text-base font-semibold 
-                text-gray-700 shadow-md'
+                            flex h-6 w-6  
+                            items-center justify-center rounded-lg 
+                            bg-gray-300 text-center text-base font-semibold 
+                            text-gray-700 shadow-md'
                         >
                             <SettingsIcon />
                         </button>
@@ -161,6 +166,7 @@ export const DashboardComponent = () => {
                         {sensorList?.results?.map((data, i) => (
                             <div
                                 key={i}
+                                id='sensorListRow'
                                 className=' flex flex-row p-5 even:bg-slate-100'
                             >
                                 <div className='w-1/6 font-semibold text-gray-700'>
@@ -192,6 +198,7 @@ export const DashboardComponent = () => {
                                     <Link
                                         to={'/edit-sensor/' + data.device_id}
                                         type='button'
+                                        id='options'
                                         className='flex w-10/12 items-center justify-center rounded-lg bg-gray-200 py-2 px-4 text-center text-base font-normal text-gray-600 shadow-md'
                                     >
                                         Options

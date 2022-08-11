@@ -22,7 +22,7 @@ import {
     updateSensorAction,
 } from './Actions';
 
-const initialState: State = {
+export const initialState: State = {
     toggleDrawer: false,
     isLoading: false,
     sensorList: null,

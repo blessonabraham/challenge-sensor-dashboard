@@ -1,11 +1,12 @@
 module.exports = {
     preset: 'ts-jest',
     transform: {
-      '^.+\\.(ts|tsx)?$': 'ts-jest',
-      "^.+\\.(js|jsx)$": "babel-jest",
+        '^.+\\.(ts|tsx)?$': 'ts-jest',
+        '^.+\\.(js|jsx)$': 'babel-jest',
     },
-    testEnvironment: 'jest-environment-jsdom',
-    setupFilesAfterEnv: [
-      "<rootDir>/jest.setup.ts"
-    ]
-  };
+    testEnvironment: 'jsdom',
+    setupFilesAfterEnv: ['<rootDir>/jest.setup.ts'],
+    transformIgnorePatterns: [
+        `/node_modules/(?!d3-*|internmap)`,
+      ],
+};

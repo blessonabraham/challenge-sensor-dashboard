@@ -4,20 +4,14 @@
         "strict": true,
         "removeComments": true,
         "sourceMap": false,
-        "noImplicitAny": true,
-        "noUnusedLocals": true,
-        "noUnusedParameters": true,
+        // "noImplicitAny": true,
+        // "noUnusedLocals": true,
+        // "noUnusedParameters": true,
         "strictNullChecks": false,
         "skipLibCheck": true,
         "noEmit": true,
         "esModuleInterop": true
     },
-    "include": [
-        "src/*", "src/**/*", "src/**/**/*"
-    ],
-    "exclude": [
-        "node_modules",
-        "**/*.spec.ts",
-        "*.test.*"
-    ]
+    "include": ["src/*", "src/**/*", "src/**/**/*"],
+    "exclude": ["node_modules", "src/**/*.test.tsx"]
 }
